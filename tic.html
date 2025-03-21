@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tic-tac-toe</title>
+    <link rel="stylesheet" href="tic.css" />
+  </head>
+  <body>
+    <div class="squares">
+      <table>
+        <tr>
+          <td class="tictac" onclick="tic(event)" id="zero"></td>
+          <td class="tictac" onclick="tic(event)" id="one"></td>
+          <td class="tictac" onclick="tic(event)" id="two"></td>
+        </tr>
+        <tr>
+          <td class="tictac" onclick="tic(event)" id="three"></td>
+          <td class="tictac" onclick="tic(event)" id="four"></td>
+          <td class="tictac" onclick="tic(event)" id="five"></td>
+        </tr>
+        <tr>
+          <td class="tictac" onclick="tic(event)" id="six"></td>
+          <td class="tictac" onclick="tic(event)" id="seven"></td>
+          <td class="tictac" onclick="tic(event)" id="eight"></td>
+        </tr>
+      </table>
+      <div class="reset1">
+        <input type="button" onclick="resetgame()" value="Reset" />
+      </div>
+      <p id="print"></p>
+    </div>
+  </body>
+  <script>
+    let show = document.getElementById("print");
+    let a = document.getElementById("zero");
+    let b = document.getElementById("one");
+    let c = document.getElementById("two");
+    let d = document.getElementById("three");
+    let e = document.getElementById("four");
+    let f = document.getElementById("five");
+    let g = document.getElementById("six");
+    let h = document.getElementById("seven");
+    let i = document.getElementById("eight");
+    let player = "X";
+
+    function tic(event) {
+      btn = event.target;
+      if (btn.innerHTML == "") {
+        if (player === "X") {
+          btn.innerHTML = "X";
+          console.log(btn.innerHTML);
+
+          player = "O";
+        } else {
+          btn.innerHTML = "O";
+          console.log(btn.innerHTML);
+          player = "X";
+        }
+        checkwinner();
+        checkdraw();
+      }
+    }
+
+    function checkwinner() {
+      if (
+        (a.innerHTML == "X" && b.innerHTML == "X" && c.innerHTML == "X") ||
+        (d.innerHTML == "X" && e.innerHTML == "X" && f.innerHTML == "X") ||
+        (g.innerHTML == "X" && h.innerHTML == "X" && i.innerHTML == "X") ||
+        (a.innerHTML == "X" && d.innerHTML == "X" && g.innerHTML == "X") ||
+        (b.innerHTML == "X" && e.innerHTML == "X" && h.innerHTML == "X") ||
+        (c.innerHTML == "X" && f.innerHTML == "X" && i.innerHTML == "X") ||
+        (a.innerHTML == "X" && e.innerHTML == "X" && i.innerHTML == "X") ||
+        (g.innerHTML == "X" && e.innerHTML == "X" && c.innerHTML == "X")
+      ) {
+        show.innerHTML = "Player-one won";
+        a.innerHTML = "";
+        b.innerHTML = "";
+        c.innerHTML = "";
+        d.innerHTML = "";
+        e.innerHTML = "";
+        f.innerHTML = "";
+        g.innerHTML = "";
+        h.innerHTML = "";
+        i.innerHTML = "";
+        player = "X";
+      }
+      if (
+        (a.innerHTML == "O" && b.innerHTML == "O" && c.innerHTML == "O") ||
+        (d.innerHTML == "O" && e.innerHTML == "O" && f.innerHTML == "O") ||
+        (g.innerHTML == "O" && h.innerHTML == "O" && i.innerHTML == "O") ||
+        (a.innerHTML == "O" && d.innerHTML == "O" && g.innerHTML == "O") ||
+        (b.innerHTML == "O" && e.innerHTML == "O" && h.innerHTML == "O") ||
+        (c.innerHTML == "O" && f.innerHTML == "O" && i.innerHTML == "O") ||
+        (a.innerHTML == "O" && e.innerHTML == "O" && i.innerHTML == "O") ||
+        (g.innerHTML == "O" && e.innerHTML == "O" && c.innerHTML == "O")
+      ) {
+        show.innerHTML = "Player-two won";
+        a.innerHTML = "";
+        b.innerHTML = "";
+        c.innerHTML = "";
+        d.innerHTML = "";
+        e.innerHTML = "";
+        f.innerHTML = "";
+        g.innerHTML = "";
+        h.innerHTML = "";
+        i.innerHTML = "";
+        player = "X";
+      }
+      return;
+    }
+
+    function checkdraw() {
+      if (
+        a.innerHTML !== "" &&
+        b.innerHTML !== "" &&
+        c.innerHTML !== "" &&
+        d.innerHTML !== "" &&
+        e.innerHTML !== "" &&
+        f.innerHTML !== "" &&
+        g.innerHTML !== "" &&
+        h.innerHTML !== "" &&
+        i.innerHTML !== ""
+      ) {
+        show.innerHTML = "Game is Draw";
+        // a.innerHTML = "";
+        // b.innerHTML = "";
+        // c.innerHTML = "";
+        // d.innerHTML = "";
+        // e.innerHTML = "";
+        // f.innerHTML = "";
+        // g.innerHTML = "";
+        // h.innerHTML = "";
+        // i.innerHTML = "";
+        // player = "X";
+      }
+      return;
+    }
+
+    function resetgame() {
+      a.innerHTML = "";
+      b.innerHTML = "";
+      c.innerHTML = "";
+      d.innerHTML = "";
+      e.innerHTML = "";
+      f.innerHTML = "";
+      g.innerHTML = "";
+      h.innerHTML = "";
+      i.innerHTML = "";
+      show.innerHTML = "";
+      player = "X";
+      // btn.innerHTML = "";
+    }
+  </script>
+</html>
+
